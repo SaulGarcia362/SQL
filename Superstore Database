@@ -1,0 +1,23 @@
+SELECT item_name, price
+FROM superstore
+ORDER BY price; 
+
+SELECT SUM(price), category
+FROM superstore
+GROUP BY category;
+
+SELECT MAX(price),category
+FROM superstore
+GROUP BY category;
+ 
+ SELECT SUM(price), category
+ FROM superstore
+ WHERE Category = 'Kitchen Supplies';
+ --cheapest item in the store--
+ SELECT MIN(price),item_name
+ FROM superstore;
+ --how many LED TVs are in stock
+ SELECT stock_quantity, item_name
+ FROM superstore
+ WHERE item_name='Smart LED TV';
+ 
