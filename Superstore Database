@@ -1,22 +1,29 @@
+-- 1 Write a SQL query that orders the items by price
 SELECT item_name, price
 FROM superstore
 ORDER BY price; 
 
+--2 Write your own SQL query that shows a statistic about the item prices, like a sum. average, minimum, maximum, or count
+-- Sales from each category
 SELECT SUM(price), category
 FROM superstore
 GROUP BY category;
 
+--3 Most expensive item from each category
 SELECT MAX(price),category
 FROM superstore
 GROUP BY category;
- 
+
+--4 Total sales in the kitchen supplies department
  SELECT SUM(price), category
  FROM superstore
  WHERE Category = 'Kitchen Supplies';
- --cheapest item in the store--
+
+ --5 cheapest items in the store--
  SELECT MIN(price),item_name
  FROM superstore;
- --how many LED TVs are in stock
+
+ --6 how many LED TVs are in stock
  SELECT stock_quantity, item_name
  FROM superstore
  WHERE item_name='Smart LED TV';
