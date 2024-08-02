@@ -1,0 +1,46 @@
+SELECT *
+FROM fortune_companies;
+
+-- 1 A company that a future mother would most likely apply to,
+
+
+SELECT company_name, paid_time_off_days, maternity_leave_weeks
+From fortune_companies
+WHERE paid_time_off_days > 16
+AND maternity_leave_weeks > 14
+ORDER BY paid_time_off_days DESC,
+         maternity_leave_weeks DESC;
+         
+ --2 Average revevenue of each industry of at least 200 billion?
+ SELECT ROUND(AVG(revenue),1) AS Average_Salary, industry
+ FROM fortune_companies
+ GROUP BY industry
+ HAVING Average_Salary>= 200;
+
+-- 3 Average paid time off from each industry 
+ SELECT industry, ROUND(AVG(paid_time_off_days),1) AS Average_Paid_Iime_Off_Days
+ FROM fortune_companies
+ GROUP BY industry
+ HAVING AVG(paid_time_off_days) >= 18;
+ 
+ --4 Best industry that has gives the most paid time off
+ SELECT company_name,
+ CASE 
+ WHEN paid_time_off_days >= 22 THEN 'Great_paid_time_off'
+ WHEN paid_time_off_days >= 20 THEN 'Reasonable_paid_time_off'
+ ELSE 'not_acceptable'
+ END as 'Stress_Free_Jobs'
+ FROM fortune_companies
+ WHERE industry = 'Technology';
+ SELECT company_name, industry, paid_time_off_days,
+CASE WHEN paid_time_off_days>=20 THEN "Way Above Average PTO"
+WHEN paid_time_off_days>=15 THEN "Above Average PTO"
+WHEN paid_time_off_days>=13 THEN "Average PTO"
+ELSE "Below Average PTO"
+END AS PTO_Amount_Standard
+FROM fortune_companies
+WHERE industry = 'Healthcare'
+ORDER BY paid_time_off_days asc;
+ 
+ 
+ 
